@@ -1,0 +1,259 @@
+\documentclass{beamer}
+
+%------------------------------------------------
+%   THEME AND APPEARANCE
+%------------------------------------------------
+\usetheme{Madrid} % A clean, professional theme
+\usecolortheme{beaver} % A nice color scheme
+\setbeamertemplate{navigation symbols}{} % Removes navigation symbols
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{textpos} % For precise text positioning
+
+% Custom command for source attribution
+\newcommand{\source}[1]{\begin{textblock*}{\textwidth}(0.1cm, 9.5cm)\tiny Source: #1\end{textblock*}}
+
+%------------------------------------------------
+%   TITLE PAGE INFORMATION
+%------------------------------------------------
+\title[Predicting Lotto Numbers]{Predicting Lotto Numbers: A Natural Experiment on the Gambler's Fallacy and the Hot-Hand Fallacy}
+\subtitle{Suetens, Galbo-Jørgensen, \& Tyran (2016)}
+\author{Timothy Nguyen}
+\institute{EC323 Behavioral Economics \\ Professor Jawwad Noor}
+\date{July 31, 2025}
+
+%------------------------------------------------
+%   PRESENTATION BEGINS
+%------------------------------------------------
+\begin{document}
+
+%------------------------------------------------
+% SLIDE 1: TITLE PAGE
+%------------------------------------------------
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 2: INTRODUCTION
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Introduction: A Tale of Two Fallacies}
+    \begin{itemize}
+        \item As discussed in our course notes, people often exhibit two seemingly contradictory biases when judging random sequences:
+        \vspace{1em}
+        \item \textbf{The Gambler's Fallacy (GF):} The belief that a recent outcome makes the opposite outcome \textit{more} likely. (e.g., "Red is due after a streak of black.")
+        \vspace{1em}
+        \item \textbf{The Hot-Hand Fallacy (HHF):} The belief that a recent streak of an outcome makes that same outcome \textit{more} likely. (e.g., "The player is on fire, pass him the ball!")
+        \vspace{1em}
+        \item \textbf{The Research Question:} Can these two opposing fallacies coexist? Specifically, do lotto players bet \textit{less} on numbers drawn last week (GF), but \textit{more} on numbers that have been drawn frequently in the recent past (HHF)?
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 3: BACKGROUND & THEORY
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Background: The Law of Small Numbers}
+    \begin{itemize}
+        \item \textbf{Course Context:} This paper provides field evidence for the theories of belief formation under uncertainty discussed in our class.
+        \vspace{1em}
+        \item \textbf{The "Law of Small Numbers":} The core idea, proposed by Tversky \& Kahneman and formalized by Rabin \& Vayanos (2010), is that people mistakenly believe small samples should be representative of the large population.
+        \vspace{1em}
+        \item \textbf{Fallacy Reversal Intuition:}
+        \begin{itemize}
+            \item A belief in the law of small numbers leads to the \textbf{Gambler's Fallacy} in the short run (expecting reversals to maintain representativeness).
+            \item However, a \textit{long streak} violates this belief so strongly that the person starts to doubt the randomness of the process itself, inferring an underlying cause or "hotness." This leads to the \textbf{Hot-Hand Fallacy}.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 4: DATA & METHODOLOGY
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Data \& Methodology: Danish Lotto}
+    \begin{itemize}
+        \item \textbf{A Natural Experiment:} The study uses data from the Danish state lottery, a truly random process, avoiding the confound of "skill" present in studies like basketball.
+        \vspace{1em}
+        \item \textbf{Key Advantage:} The data is from online players who have a unique ID, allowing the researchers to track \textit{individual betting choices} over 28 weeks in 2005. The individual analysis uses data from 7,323 players.
+        \vspace{1em}
+        \item \textbf{Dependent Variables:} Two proxies for betting confidence.
+        \begin{itemize}
+            \item \texttt{NumberBet}: Whether a player picks a number.
+            \item \texttt{MoneyBet}: How much money a player bets on a number, weighted by the size of the set of numbers they chose.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 5: EMPIRICAL MODEL
+%------------------------------------------------
+\begin{frame}
+    \frametitle{The Empirical Model}
+    \begin{itemize}
+        \item \textbf{Key Independent Variables:}
+        \begin{itemize}
+            \item \texttt{Drawn\textsubscript{t-1}}: = 1 if number $j$ was drawn in week $t-1$.
+            \item \texttt{Hotness\textsubscript{t-1}}: Count of how often number $j$ was drawn from week $t-2$ to $t-6$.
+        \end{itemize}
+        \vspace{1em}
+        \item \textbf{Aggregate Regression Model :}
+        \begin{center}
+        \small
+        $DV_{ijt} = \beta_0 + \beta_1 \text{Drawn}_{jt-1} + \beta_2 \text{Hotness}_{jt-1} + \beta_3 (\text{Drawn}_{jt-1} \times \text{Hotness}_{jt-1}) + \dots$
+        \end{center}
+        \begin{itemize}
+            \item \textbf{GF Test:} $\beta_1 < 0$
+            \item \textbf{HHF Test:} $\beta_2 > 0$ and/or $\beta_3 > 0$
+        \end{itemize}
+        \vspace{1em}
+        \item \textbf{Individual-Level Model :}
+        \begin{center}
+        \small
+        $\Delta \text{MoneyBet}_{ijt} = \beta_{0j} + \beta_{1i} \text{Drawn}_{jt-1} + \beta_{2i} \text{Hotness}_{jt-1} + \dots$
+        \end{center}
+        \begin{itemize}
+            \item Regressions are run for each player $i$ to get their individual biases, $\beta_{1i}$ and $\beta_{2i}$.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 6: AGGREGATE RESULTS
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Aggregate Results: Both Fallacies are Present}
+    \begin{itemize}
+        \item The researchers run pooled regressions on different samples (all players, active players, and "changers" who alter their bets).
+        \vspace{1em}
+        \item \textbf{Evidence for Gambler's Fallacy ($\beta_1 < 0$):}
+        \begin{itemize}
+            \item On average, players bet significantly \textit{less} on numbers that were drawn in the preceding week.
+            \item The effect is strongest for active "changers", who bet about \textbf{2-3\% less} on a number if it was drawn last week.
+        \end{itemize}
+        \vspace{1em}
+        \item \textbf{Evidence for Hot-Hand Fallacy ($\beta_3 > 0$):}
+        \begin{itemize}
+            \item Players bet significantly \textit{more} on numbers as their `Hotness` increases, but primarily if that number was also drawn last week.
+            \item The marginal effect is about a \textbf{1\% increase} in bets for each additional time the number was drawn in the recent past.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 7: VISUAL AID FOR AGGREGATE RESULTS
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Aggregate Results: Visualized}
+    \begin{center}
+        % MODIFIED: Changed width=\textwidth to height=0.8\textheight to ensure the full image fits
+        \includegraphics[height=0.8\textheight, keepaspectratio]{figure1.png}
+    \end{center}
+    \source{Suetens, Galbo-Jørgensen, \& Tyran (2016), Figure 1, p. 596}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 8: INTERPRETING FIGURE 1
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Interpreting Figure 1: A Closer Look}
+    \begin{itemize}
+        \item \textbf{How to Read the Plots:}
+        \begin{itemize}
+            \item \textbf{Gambler's Fallacy (GF):} Compare the first bar on the left (`Not Drawn`) with the first bar on the right (`Drawn`). If the right bar is lower, players avoid last week's numbers.
+            \item \textbf{Hot-Hand Fallacy (HHF):} Look at the trend on the right side (`Drawn`). If the bars rise with `Hotness`, players chase streaks.
+        \end{itemize}
+        \vspace{1em}
+        \item \textbf{Key Observation Across Samples:}
+        \begin{itemize}
+            \item \textbf{Top Row (Full Sample):} Effects are small.
+            \item \textbf{Middle Row (Active Players):} Effects become clearer.
+            \item \textbf{Bottom Row (Sample of Changers):} The effects are strongest and most significant. This shows the biases are driven by active players who change their bets, not by people quitting after a win.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 9: INDIVIDUAL-LEVEL ANALYSIS
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Individual-Level Analysis: Are the Fallacies Related?}
+    \begin{itemize}
+        \item \textbf{The Core Question:} Do the fallacies just coexist in the aggregate, or do the \textit{same individuals} exhibit both biases?
+        \vspace{1em}
+        \item \textbf{Method:} The authors run separate regressions for each of the 7,323 individual players to estimate their personal sensitivity to \texttt{Drawn} ($\beta_{1i}$) and \texttt{Hotness} ($\beta_{2i}$).
+        \vspace{1em}
+        \item \textbf{Finding:} There is a significant negative relationship between the two estimates. Players who most strongly exhibit the Gambler's Fallacy (large negative $\beta_{1i}$) also tend to most strongly exhibit the Hot-Hand Fallacy (large positive $\beta_{2i}$).
+        \vspace{0.5em}
+        \item \textbf{Quantitatively:} Among players with statistically significant biases, \textbf{55\%} (71 out of 129) exhibit both fallacies simultaneously—more than double the 25\% expected by chance.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 10: VISUAL AID FOR INDIVIDUAL RESULTS
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Individual Results: Visualized}
+    \begin{center}
+        % This command should be fine, but can be adjusted if needed
+        \includegraphics[width=0.8\textwidth, keepaspectratio]{figure2.png}
+    \end{center}
+    \source{Suetens, Galbo-Jørgensen, \& Tyran (2016), Figure 2, p. 601}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 11: TAKE-AWAYS
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Upshots \& Take-Aways}
+    \begin{itemize}
+        \item \textbf{Main Take-Away:} This paper provides the first field evidence that the Gambler's Fallacy and the Hot-Hand Fallacy are systematically related and can coexist within the same individual.
+        \vspace{1em}
+        \item \textbf{Link to Theory:} The findings strongly support the "law of small numbers" and "fallacy reversal" models proposed by Rabin and Vayanos.
+        \vspace{1em}
+        \item \textbf{Broader Implications:}
+        \begin{itemize}
+            \item This framework can help explain financial market anomalies, like short-term underreaction (GF) and long-term overreaction (HHF) to earnings news.
+            \item It shows that even in a purely random environment, people's beliefs and behaviors are predictable and systematically biased.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 12: PERSONAL COMMENTS
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Personal Reactions \& Comments}
+    \begin{alertblock}{Strengths of the Paper}
+        \begin{itemize}
+            \item The paper is strong because it uses real-world data from the lottery. This is better than a lab experiment because people are acting naturally, and it's better than studying sports because the lottery is purely random, so there's no confusion with skill. It gives us a very clean look at people's psychology.
+        \end{itemize}
+    \end{alertblock}
+    \vspace{1em}
+    \begin{exampleblock}{Avenues for Discussion \& Critique}
+        \begin{itemize}
+            \item \textbf{Heterogeneity:} The paper finds the effects are strongest for male, frequent, and heavy players. This suggests the biases are not uniform.
+            \item \textbf{Selection Bias:} People who believe they can predict lotto numbers are more likely to play. The observed biases might be stronger in this population than in the general population.
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+%------------------------------------------------
+% SLIDE 13: Q&A
+%------------------------------------------------
+\begin{frame}
+    \frametitle{Q\&A and Discussion}
+    \vfill
+    \begin{center}
+        \Huge \textbf{Thank you.}
+        \vspace{1em}
+        
+        \Large Questions?
+    \end{center}
+    \vfill
+\end{frame}
+
+\end{document}
