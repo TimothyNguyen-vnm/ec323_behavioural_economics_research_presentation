@@ -1,0 +1,305 @@
+\documentclass{beamer}
+
+% --- PREAMBLE: PACKAGES AND THEME ---
+\usepackage[T1]{fontenc} % Recommended for font encoding
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz} % For custom boxes
+
+% --- THEME AND COLOR SETUP ---
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamercolor{block title}{bg=blue!20!white,fg=black}
+\setbeamercolor{block body}{bg=blue!5!white}
+\setbeamercolor{alertblock title}{bg=red!20!white,fg=black}
+\setbeamercolor{exampleblock title}{bg=green!20!white,fg=black}
+
+% --- TITLE INFORMATION ---
+\title{Salience and Taxation: Theory and Evidence}
+\subtitle{An Analysis of Chetty, Looney, \& Kroft (AER, 2009)}
+\author{Timothy Nguyen}
+\institute{EC323 - Professor Jawwad Noor}
+\date{\today}
+
+
+\begin{document}
+
+% ===================================================================
+% SLIDE 1: TITLE PAGE
+% ===================================================================
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------extra %
+\begin{frame}
+  \frametitle{What is "Tax Salience"?}
+  
+  \begin{block}{Definition}
+    ``Tax salience'' refers to the visibility of the tax-inclusive price. It's how obvious the total cost is when you decide to buy.
+  \end{block}
+
+  \pause % Pauses the slide before showing the examples
+
+  \begin{alertblock}{Scenario: A \$10 item with 7.5\% sales tax.}
+  \end{alertblock}
+  
+  \begin{columns}[T] % T aligns the tops of the columns
+    
+    \begin{column}{0.5\textwidth}
+      \begin{block}{High Salience (Tax Included)}
+        \begin{itemize}
+          \item Price shows: \textbf{\$10.75}
+          \item You see the full cost upfront.
+          \item \textbf{Your brain processes:} "This costs \$10.75."
+        \end{itemize}
+      \end{block}
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Low Salience (Tax Added at Register)}
+        \begin{itemize}
+          \item Price shows: \textbf{\$10.00}
+          \item Final cost at checkout: \$10.75
+          \item \textbf{Your brain processes:} "This costs \$10.00."
+        \end{itemize}
+      \end{block}
+    \end{column}
+    
+  \end{columns}
+  
+\end{frame}
+
+% ===================================================================
+% SLIDE 2: INTRODUCTION & RESEARCH QUESTION
+% ===================================================================
+\begin{frame}
+\frametitle{ Introduction and Research Question}
+
+\begin{block}{Standard Economic Assumption}
+A central assumption in public economics is that agents engage in \textbf{full optimization} with respect to tax policies, treating a tax exactly like a price change.
+\end{block}
+
+\begin{alertblock}{The Paper's Core Research Question}
+This paper empirically investigates whether this is true by analyzing the effect of tax \textbf{"salience,"} defined as the visibility of the tax-inclusive price.
+\begin{itemize}
+    \item \textbf{Hypothesis:} Consumers systematically underreact to taxes that are not salient (i.e., not included in posted prices).
+\end{itemize}
+\end{alertblock}
+
+\begin{exampleblock}{Connection to Lectures}
+This research directly tests the concept of \textbf{Context-Dependent Preferences} from the "Psychology of Choice" lectures. The "context" here is how the price information is framed for the consumer, challenging the model of a rational agent with fixed preferences.
+\end{exampleblock}
+
+\end{frame}
+
+% ===================================================================
+% SLIDE 3: EMPIRICAL FRAMEWORK
+% ===================================================================
+\begin{frame}
+\frametitle{Empirical Framework}
+
+\begin{block}{The Model and Key Parameter}
+The authors model consumer demand as a log-linear function of the posted price ($p$) and the ad valorem sales tax ($\tau^s$):
+\begin{equation}
+    \log x(p, \tau^s) = \alpha + \beta \log p + \theta_{\tau}\beta \log(1+\tau^s) \nonumber
+\end{equation}
+The key parameter is $\theta_{\tau}$, which measures the degree to which consumers underreact to the tax, defined as the ratio of the tax elasticity to the price elasticity:
+\begin{equation}
+    \theta_{\tau} = \frac{\epsilon_{x,1+\tau^s}}{\epsilon_{x,p}} \nonumber
+\end{equation}
+The neoclassical null hypothesis is $\theta_{\tau} = 1$. This framework simplifies a complex psychological concept into one testable factor
+\end{block}
+
+\begin{center}
+    % --- INSERT YOUR SCREENSHOT OF THE FRAMEWORK HERE ---
+    % Replace the line below with: \includegraphics[width=0.9\textwidth]{your_screenshot_name.jpg}
+    \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering \large Placeholder for Screenshot of Empirical Framework}}
+\end{center}
+
+\end{frame}
+
+% ===================================================================
+% SLIDE 4: THE TWO EMPIRICAL STRATEGIES
+% ===================================================================
+\begin{frame}
+\frametitle{The Two Empirical Strategies}
+
+\begin{columns}[T] % The [T] option aligns the tops of the columns
+\begin{column}{0.5\textwidth}
+\begin{alertblock}{Strategy 1: Manipulate Tax Salience}
+    \textbf{Concept:} Make the non-salient sales tax as visible as the pretax price.
+    \vspace{0.5em}
+    \textbf{Method:} Post new price tags showing the full tax-inclusive price, $q=(1+\tau^s)p$.
+    \vspace{0.5em}
+    \textbf{Estimator:} The degree of underreaction, $(1-\theta_{\tau})$, is estimated by:
+    \[ (1 - \theta_{\tau}) = - \frac{\Delta \log x}{\epsilon_{x,p} \log(1+\tau^s)} \]
+\end{alertblock}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{exampleblock}{Strategy 2: Manipulate Tax Rate}
+    \textbf{Concept:} Exploit independent variation in the tax rate ($\tau^s$) and the pretax price ($p$).
+    \vspace{0.5em}
+    \textbf{Method:} Use observational data where tax rates and prices change independently.
+    \vspace{0.5em}
+    \textbf{Estimator:} The parameter $\theta_{\tau}$ is identified directly by the ratio of the two estimated elasticities:
+    \[ \theta_{\tau} = \frac{\epsilon_{x,1+\tau^s}}{\epsilon_{x,p}} \]
+\end{exampleblock}
+\end{column}
+\end{columns}
+
+\begin{center}
+    % --- INSERT YOUR SCREENSHOT OF THE STRATEGIES HERE ---
+    % Replace the line below with: \includegraphics[width=0.9\textwidth]{your_screenshot_name.png}
+    \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering \large Placeholder for Screenshot of Estimation Strategies}}
+\end{center}
+
+\end{frame}
+
+% --- SLIDE FOR TABLE 1 ---
+\begin{frame}
+  \frametitle{Data Table 1}
+  % Ensure the image file is in the same folder as your .tex file.
+  % Using quotes around the filename is good practice if it contains spaces.
+  \begin{center}
+    \includegraphics[width=\textwidth,keepaspectratio]{"Screenshot 2025-07-29 at 02.10.52.png"}
+  \end{center}
+\end{frame}
+
+% --- SLIDE FOR TABLE 2 ---
+\begin{frame}
+  \frametitle{Data Table 2}
+  \begin{center}
+    \includegraphics[width=\textwidth,keepaspectratio]{"Screenshot 2025-07-29 at 02.10.58.png"}
+  \end{center}
+\end{frame}
+
+% --- SLIDE FOR TABLE 3 ---
+\begin{frame}
+  \frametitle{Data Table 3}
+  \begin{center}
+    \includegraphics[width=\textwidth,keepaspectratio]{"Screenshot 2025-07-29 at 02.11.03.png"}
+  \end{center}
+\end{frame}
+
+% ===================================================================
+% SLIDE 5: STRATEGY 1: FIELD EXPERIMENT DESIGN & RESULTS
+% ===================================================================
+\begin{frame}
+\frametitle{Strategy 1: The Grocery Store Experiment}
+
+\begin{block}{Design and Implementation}
+\begin{itemize}
+    \item \textbf{Setting:} A supermarket with a 7.375\% sales tax added at the register.
+    \item \textbf{Intervention:} For three weeks, posted new tags showing the full tax-inclusive price for $\sim$750 products.
+    \item \textbf{Methodology:} A difference-in-differences (DDD) design comparing treated products to control groups.
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Results \& Connection to Lectures}
+\begin{itemize}
+    \item Posting the tax-inclusive tags caused demand for the treated products to \textbf{fall by 7.6 percent}.
+    \item This implies a salience parameter $\theta_{\tau} \approx 0.35$.
+    \item Surveys confirmed this is due to \textbf{inattention}, not lack of information. This provides real-world evidence for the lecture notes' models of \textbf{limited attention} and the power of \textbf{framing effects}.
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+
+
+% ===================================================================
+% SLIDE 6: CONNECTION TO PROSPECT THEORY
+% ===================================================================
+\begin{frame}
+\frametitle{Connection to Prospect Theory (Topics 3 \& 4)}
+
+\begin{block}{Reference Dependence}
+\begin{itemize}
+    \item \textbf{From Lecture Notes:} Prospect Theory assume that people evaluate outcomes not in absolute terms, but as gains and losses relative to a \textbf{reference point}.
+    \item \textbf{Paper Connection:} The posted shelf price acts as the consumer's powerful reference point. The sales tax, revealed later, is psychologically coded as a "loss" from that reference.
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Loss Aversion}
+\begin{itemize}
+    \item \textbf{From Lecture Notes:} This principle states that losses are felt more intensely than equivalent gains ($v(x) < -v(-x)$).
+    \item \textbf{Paper Connection:} This helps explain the market equilibrium. Retailers have a strong incentive \textit{not} to make the tax salient because they intuitively understand that framing a cost as an explicit loss would trigger a stronger negative psychological reaction.
+\end{itemize}
+\end{exampleblock}
+
+\end{frame}
+
+% ===================================================================
+% SLIDE 7: STRATEGY 2: OBSERVATIONAL STUDY & RESULTS
+% ===================================================================
+\begin{frame}
+\frametitle{Strategy 2: The Alcohol Tax Study}
+
+\begin{block}{Design and Implementation}
+\begin{itemize}
+    \item \textbf{Natural Experiment:} Exploits two types of state-level alcohol taxes:
+        \begin{enumerate}
+            \item A \textbf{salient excise tax} (included in the posted price).
+            \item A \textbf{non-salient sales tax} (added at the register).
+        \end{enumerate}
+    \item \textbf{Data:} State-level beer consumption and tax rates from 1970-2003.
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Results & Connection to Lectures}
+\begin{itemize}
+    \item The salient excise tax reduces consumption by an \textbf{"order of magnitude more"} than the non-salient sales tax.
+    \item The sales tax elasticity is statistically indistinguishable from zero, implying $\theta_{\tau} \approx 0$.
+    \item This long-run persistence demonstrates a stable psychological bias, consistent with the lecture notes' concept of a \textbf{Status Quo Bias}, where consumers anchor on the visible price.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+% ===================================================================
+% Add tables images
+% ===================================================================
+
+
+% ===================================================================
+% SLIDE 9: CONCLUSION & SUMMARY OF CONNECTIONS
+% ===================================================================
+\begin{frame}
+\frametitle{Conclusion \& Summary of Connections}
+
+\begin{block}{Summary of Findings}
+The Chetty et al. paper provides robust evidence that tax salience matters profoundly, due to \textbf{inattention}, not lack of information. This has two major upshots:
+\begin{itemize}
+    \item Statutory incidence affects economic incidence, violating tax neutrality.
+    \item The paper provides a framework for welfare analysis with non-rational agents.
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Synthesis of Connections to Lectures}
+The research empirically validates a web of interconnected psychological principles:
+\begin{itemize}
+    \item It is a real-world example of \textbf{Context-Dependence} and \textbf{Framing Effects}.
+    \item The results can be interpreted through the lens of Prospect Theory's \textbf{Reference Dependence} and \textbf{Loss Aversion}.
+    \item The behavior demonstrates a form of \textbf{Status Quo Bias} and an aversion to the "cognitive ambiguity" of non-salient costs.
+    \item It documents a \textbf{Violation of a Standard Rational Model}, parallel to the paradoxes of choice under uncertainty.
+\end{itemize}
+\end{alertblock}
+
+\end{frame}
+
+% ===================================================================
+% SLIDE 10: Q&A
+% ===================================================================
+\begin{frame}
+\frametitle{Questions \& Discussion}
+  \begin{center}
+    \Huge Thank you.
+    \vspace{2cm}
+    \Large Questions?
+  \end{center}
+\end{frame}
+
+\end{document}
