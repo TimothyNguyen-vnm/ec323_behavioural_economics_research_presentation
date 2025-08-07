@@ -1,0 +1,260 @@
+\documentclass{beamer}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+%----------------------------------------------------------------------------------------
+%	THEME AND APPEARANCE
+%----------------------------------------------------------------------------------------
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\title[Altruistic Punishment]{The Price of Justice: Altruistic Punishment and Human Cooperation}
+\subtitle{Based on Fehr \& Gächter (Nature, 2002)}
+\author{Timothy Nguyen}
+\institute{EC323: Behavioral Economics \\ Professor Jawwad Noor}
+\date{August 6, 2025}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+% Agenda
+\begin{frame}{Agenda}
+    \begin{enumerate}
+        \item<+-| alert@+> Introduction: The Puzzle of Cooperation
+        \item<+-| alert@+> Theoretical Framework \& Predictions
+        \item<+-| alert@+> Experimental Design: The Public Goods Game
+        \item<+-| alert@+> Analysis of Experimental Results
+        \item<+-| alert@+> Discussion \& Final Conclusions
+        \item<+-| alert@+> Q\&A
+    \end{enumerate}
+\end{frame}
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+\begin{frame}{The Puzzle of Cooperation}
+    \begin{itemize}
+        \item<1-> Humans often help strangers, even at a personal cost.
+        \pause
+        \item<2-> This is a puzzle because standard economic models assume people are purely self-interested.
+        \pause
+        \item<3-> So, why do we punish "free-riders" when we get nothing out of it?
+        \pause
+        \item<4-> This is called \textbf{altruistic punishment}.
+    \end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	CONNECTION TO LECTURE
+%----------------------------------------------------------------------------------------
+\begin{frame}{Connecting to Our Class: Social Preferences}
+    This experiment challenges the basic assumption of pure self-interest.
+    \begin{itemize}
+        \item<1-> In our lectures, we've discussed how people are not always selfish. They have \textbf{social preferences}.
+        \pause
+        \item<2-> People care about fairness and what others get. This is sometimes called \textbf{inequity aversion}.
+        \pause
+        \item<3-> Altruistic punishment is a powerful example of this: people are willing to \textit{pay money} just to reduce the payoff of someone they think is unfair.
+        \pause
+        \item<4-> This behavior shows that a sense of justice can be a stronger motivator than money.
+    \end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	EXPERIMENT DESIGN
+%----------------------------------------------------------------------------------------
+\begin{frame}{The Experiment: A "Public Goods" Game}
+    \textbf{The Setup:}
+    \begin{itemize}
+        \item Anonymous groups of 4.
+        \item Each person gets 20 Money Units (MUs).
+        \item You can invest in a group project.
+    \end{itemize}
+    \pause
+    \textbf{The Dilemma:}
+    \begin{itemize}
+        \item For every 1 MU you invest, everyone in the group gets 0.4 MUs back.
+        \item Your best strategy is to be a \textbf{free-rider}: invest nothing and just collect the rewards from others' investments.
+        \item But if everyone free-rides, everyone is worse off!
+    \end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	CONDITIONS
+%----------------------------------------------------------------------------------------
+\begin{frame}{The Two Conditions}
+    To see if punishment works, subjects were split into two scenarios.
+    \begin{itemize}
+        \item<1-> \textbf{Condition 1: No Punishment}
+        \begin{itemize}
+            \item You play the game, see what others invested, and that's it. You can't do anything about it.
+        \end{itemize}
+        \pause
+        \item<2-> \textbf{Condition 2: Punishment Allowed}
+        \begin{itemize}
+            \item After investing, you have the option to punish others.
+            \item \textbf{The Cost of Justice:} You can spend 1 MU to make someone else lose 3 MUs.
+            \item This is "altruistic" because it costs you money and gives you no direct financial reward.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	UTILITY FUNCTION FOR SELFISH PLAYER
+%----------------------------------------------------------------------------------------
+\begin{frame}{The Standard Model: A Selfish Player's Choice}
+    Standard economic theory assumes utility ($U_i$) equals monetary payoff ($\pi_i$).
+    
+    \begin{itemize}
+        \item<1-> \textbf{Payoff Function:} $\pi_i = (20 - c_i) + 0.4 \sum_{j=1}^{4} c_j$
+        \pause
+        \item<2-> \textbf{The Rational Choice (Marginal Utility):}
+        \begin{itemize}
+            \item The change in utility for contributing one more MU is:
+            \[ \frac{\partial U_i}{\partial c_i} = -1 (\text{cost}) + 0.4 (\text{your share}) = -0.6 \]
+            \item Your utility goes down for every unit you contribute.
+        \end{itemize}
+        \pause
+        \item<3-> \textbf{Prediction:} A purely self-interested player will always choose $c_i^* = 0$. This model predicts cooperation will collapse.
+    \end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	UTILITY FUNCTION FOR SOCIAL PLAYER (FIXED)
+%----------------------------------------------------------------------------------------
+\begin{frame}{A Social Preferences Model (Utility View)}
+    To explain the results, we need utility functions that include social factors.
+    \begin{columns}[c]
+        \begin{column}{.5\textwidth}
+            \textbf{The Cooperator's Choice to Punish}
+            \begin{itemize}
+                \item<1-> Their utility is reduced by observing unfairness ($D_j$).
+                \item<2-> Utility: $U_i = \pi_i - \alpha(D_j)$ \\ \footnotesize{($\pi_i$: payoff, $\alpha(D_j)$: anger from unfairness)}
+                \pause
+                \item<3-> They will pay a cost ($P_i$) to punish if the psychological relief is greater than the monetary cost.
+            \end{itemize}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \textbf{The Free-Rider's Choice to Cooperate}
+            \begin{itemize}
+                \item<1-> Their utility is reduced by the expected loss ($L_j^e$) from being punished.
+                \item<2-> Utility: $U_j = \pi_j - L_j^e(c_j)$ \\ \footnotesize{($\pi_j$: payoff, $L_j^e$: expected loss)}
+                \pause
+                \item<3-> They will cooperate if the anticipated pain of punishment ($L_j^e$) is greater than the gain from free-riding.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	RESULTS 1
+%----------------------------------------------------------------------------------------
+\begin{frame}{Result 1: Punishment Boosts Cooperation}
+    \begin{columns}[c]
+        \begin{column}{.5\textwidth}
+            The experimental data rejects the standard model and supports the social preferences model.
+            \begin{itemize}
+                \item<1-> \textbf{Without Punishment:} Cooperation collapsed, as predicted by the self-interest model.
+                \pause
+                \item<2-> \textbf{With Punishment:} Cooperation was high and even \textit{increased} over time.
+                \pause
+                \item<3-> The graph shows this clearly. Cooperation thrives only when punishment is possible.
+            \end{itemize}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \begin{center}
+            \includegraphics[width=\textwidth]{figure2.png}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	RESULTS 2
+%----------------------------------------------------------------------------------------
+\begin{frame}{Result 2: Punishment Is Targeted}
+    \begin{columns}[c]
+        \begin{column}{.5\textwidth}
+            Punishment wasn't random; it was a direct response to unfairness.
+            \begin{itemize}
+                \item<1-> People consistently punished free-riders.
+                \pause
+                \item<2-> The more someone free-rode, the more heavily they were punished.
+                \pause
+                \item<3-> This graph shows that the biggest free-riders (far left) received the most punishment, matching the predictions of the social preferences model.
+            \end{itemize}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \begin{center}
+            \includegraphics[width=\textwidth]{figure1.png}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+%	DISCUSSION (Corrected)
+%----------------------------------------------------------------------------------------
+\begin{frame}{Personal Comments \& Discussion}
+    \textbf{My Reactions:}
+    \begin{itemize}
+        \item It's fascinating that a "negative" emotion like anger can actually lead to better outcomes for the group.
+        \item The simple design of the experiment makes the results very powerful and easy to understand.
+        \item This research has huge real-world implications for everything from managing climate change to building online communities.
+    \end{itemize}
+    \vspace{1cm}
+    \textbf{Questions for Discussion:}
+    \begin{itemize}
+        \item Can you think of real-world examples of altruistic punishment?
+    \end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	NEW SLIDE 1: CONNECTION TO STANDARD MODEL
+%----------------------------------------------------------------------------------------
+\begin{frame}{Connection 1: The 'Standard Model' of Selfishness}
+    Our lecture notes first introduce the standard economic model, which assumes people are purely selfish and only care about their own payoff.
+
+    \begin{itemize}
+        \item<1-> This "selfishness model" makes a clear and testable prediction for the Public Goods Game: \textbf{a rational player will contribute nothing ($c_i=0$)}.
+        \pause
+        \item<2-> As we saw in the utility function, this is because every dollar contributed leads to a personal loss of 60 cents.
+        \pause
+        \item<3-> Therefore, this experiment can be seen as a direct test of the standard model. If people cooperate, the model is incomplete.
+    \end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	NEW SLIDE 2: CONNECTION TO SOCIAL PREFERENCES
+%----------------------------------------------------------------------------------------
+\begin{frame}{Connection 2: Social Preferences - Fairness \& Reciprocity}
+    The behavior in the experiment is better explained by models of \textbf{social preferences}, as discussed in the lecture notes.
+
+    \begin{itemize}
+        \item<1-> \textbf{Inequity Aversion:} The notes mention that people may dislike unfair outcomes. The punishment of free-riders is a perfect example. Players pay a personal cost to reduce the payoff of someone who earned "unfair" money, which is consistent with models like Fehr-Schmidt.
+        \pause
+        \item<2-> \textbf{Negative Reciprocity:} Reciprocity is defined as responding to kind actions with kindness and hostile actions with hostility. Free-riding can be seen as a hostile act against the group. Punishment is therefore a classic example of negative reciprocity.
+        \pause
+        \item<3-> \textbf{Isolating Emotional Reciprocity:} The experiment used strangers who only interacted once, so people couldn't be acting selfishly to gain future benefits. This shows that when people punish unfairness, they're doing it because they care about fairness, not because they expect something in return.
+    \end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+%	Q&A
+%----------------------------------------------------------------------------------------
+\begin{frame}
+    \begin{center}
+        {\Huge \textbf{Thank You}}
+        \vspace{2cm}
+        \Large{Questions?}
+    \end{center}
+\end{frame}
+
+\end{document}
